@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            # User Service - Auth APIs
+            - id: user-service-auth
+              uri: lb://user-service
+              predicates:
+                - Path=/auth/**
+
+
+            # User Service - User APIs
+            - id: user-service-users
+              uri: lb://user-service
+              predicates:
+                - Path=/api/users/**
+
+
+
+            # Task Service
+            - id: task-service
+              uri: lb://task-service
+              predicates:
+                - Path=/api/task/**
+
+            # Task Submission Service
+            - id: task-submission-service
+              uri: lb://task-submission-service
+              predicates:
+                - Path=/api/submission/**
+
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+
+server:
+  port: 9090
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8090/eureka/
