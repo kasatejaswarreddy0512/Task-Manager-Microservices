@@ -26,7 +26,6 @@ public class SubmissionController {
     public ResponseEntity<Submission> submitTask(@RequestParam Long taskId,
                                                  @RequestParam String githubLink,
                                                  @RequestHeader("Authorization") String authHeader) throws Exception {
-        // Don’t strip Bearer, just pass as is
         UserDto userDto = userService.getUserProfile(authHeader).getBody();
 
         if (userDto == null) {
@@ -66,12 +65,11 @@ public class SubmissionController {
     @PutMapping("accept/{id}")
     public ResponseEntity<Submission> acceptDeclineSubmission(
             @PathVariable Long id,
-            @RequestParam String status, // ✅ Accept status as query param or form param
+            @RequestParam String status,
             @RequestHeader("Authorization") String authHeader
     ) throws Exception {
         String jwt = authHeader.replace("Bearer", "").trim();
 
-        // Get user profile if needed (optional validation)
         UserDto userDto = userService.getUserProfile("Bearer " + jwt).getBody();
 
         Submission updatedSubmission = submissionService.acceptDeclineSubmission(id, status, authHeader);

@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+body{
+ 
+   --webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+    font-family: 'Inter', sans-serif !important;
+
+    background: linear-gradient(135deg, #1a0b19, #150d2d, #162134 ) !important;
+    color: #ffffff !important;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    
+}

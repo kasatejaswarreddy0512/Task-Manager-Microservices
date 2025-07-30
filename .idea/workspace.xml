@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="519664e6-8b3d-4baa-9c0f-46d4e69aad21" name="Changes" comment="task commit" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kasatejaswarreddy0512&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/kasatejaswarreddy0512/Task-Manager-Microservices.git&quot;,
+    &quot;accountId&quot;: &quot;587879c3-45ca-4297-b440-e0568fdf7b4b&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="30B1WF6bSyrfrKI7buRRsaKEbVI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.eureka 8090.executor": "Run",
+    "Application.gateway 9090.executor": "Run",
+    "Application.task service 8081.executor": "Run",
+    "Application.task submission 8082.executor": "Run",
+    "Application.user service 8080.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/Task Manager/Backend",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  },
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
+    ]
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.user service 8084">
+    <configuration name="eureka 8090" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.ktsr.EurekaServiceApplication" />
+      <module name="eureka-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gateway 9090" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.ktsr.GatewayServiceApplication" />
+      <module name="gateway-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="task service 8081" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.ktsr.task_service.TaskServiceApplication" />
+      <module name="task-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="task submission 8082" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.ktsr.TaskSubmissionServiceApplication" />
+      <module name="task-submission-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="user service 8084" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.ktsr.UserServiceApplication" />
+      <module name="user-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.eureka 8090" />
+      <item itemvalue="Application.gateway 9090" />
+      <item itemvalue="Application.task service 8081" />
+      <item itemvalue="Application.task submission 8082" />
+      <item itemvalue="Application.user service 8084" />
+    </list>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="519664e6-8b3d-4baa-9c0f-46d4e69aad21" name="Changes" comment="" />
+      <created>1753086182663</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1753086182663</updated>
+    </task>
+    <task id="LOCAL-00001" summary="user commit">
+      <option name="closed" value="true" />
+      <created>1753091052253</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1753091052253</updated>
+    </task>
+    <task id="LOCAL-00002" summary="task commit">
+      <option name="closed" value="true" />
+      <created>1753091400453</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1753091400453</updated>
+    </task>
+    <task id="LOCAL-00003" summary="task commit">
+      <option name="closed" value="true" />
+      <created>1753091565412</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1753091565412</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="user commit" />
+    <MESSAGE value="task commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="task commit" />
+  </component>
+</project>

@@ -1,0 +1,13 @@
+.card{
+  background-color: #0c071b;
+  box-shadow: rgba(215, 106, 255, 0.507) 0px 0px 20px;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+
+}
+
+.btn{
+  border-radius: 20px;
+  background-color: rgba(194, 77, 208, 0.2);
+}

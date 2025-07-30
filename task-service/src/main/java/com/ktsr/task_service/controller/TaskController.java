@@ -24,16 +24,10 @@ public class TaskController {
     @PostMapping("/create")
     public ResponseEntity<Task> createTask(@RequestBody Task task,
                                            @RequestHeader("Authorization") String authHeader) throws Exception {
-//        System.out.println("Incoming Task: " + task);
-//        System.out.println("Authorization Header: " + authHeader);
 
         String jwt = authHeader.replace("Bearer", "").trim();
-//        System.out.println("Extracted JWT: " + jwt);
 
-        // 🔥 Fix: Pass "Bearer <jwt>" to Feign
         ResponseEntity<UserDto> response = userService.getUserProfile("Bearer " + jwt);
-//        System.out.println("UserDto Response: " + response);
-
         UserDto userDto = response.getBody();
         if (userDto == null) {
             throw new RuntimeException("User profile could not be fetched.");
