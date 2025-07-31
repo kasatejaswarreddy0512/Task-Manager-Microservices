@@ -22,7 +22,10 @@ const SideBar = () => {
         sx={{ backgroundColor: "#c24dd0", width: "8rem", height: "8rem" }}
         className="border-2 border-red-500 mb-6"
       >
-        T
+        <img
+          src="https://learntech.in/wp-content/uploads/2015/05/logo-design.jpg"
+          alt=""
+        />
       </Avatar>
 
       {/* Menu Items */}
