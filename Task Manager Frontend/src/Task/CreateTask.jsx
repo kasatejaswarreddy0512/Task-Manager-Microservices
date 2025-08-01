@@ -34,7 +34,7 @@ const tags = [
   "Python",
 ];
 
-export default function EditTaskCard({ handleClose, open }) {
+export default function CreateTask({ handleClose, open }) {
   const [formData, setFormData] = React.useState({
     title: "",
     description: "",
@@ -73,8 +73,6 @@ export default function EditTaskCard({ handleClose, open }) {
     console.log("Form data : ", formData, "deadLine :", deadLine);
     handleClose();
   };
-
-  // useEffect(() => {}, []);
 
   return (
     <Modal
@@ -194,7 +192,7 @@ export default function EditTaskCard({ handleClose, open }) {
                 className="customBtn"
                 onClick={handleSubmit}
               >
-                Update Task
+                Create Task
               </Button>
             </Grid>
           </Grid>
