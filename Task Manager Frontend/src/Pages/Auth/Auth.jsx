@@ -1,6 +1,7 @@
 import React, { useState } from "react"; // ✅ import useState
 import "./Auth.css";
 import Signin from "./Signin";
+import Signup from "./Signup";
 
 const Auth = () => {
   const [isRegister, setRegister] = useState(false); // ✅ corrected false
@@ -39,7 +40,9 @@ const Auth = () => {
             <div className="login-form">
               <Signin togglePannel={togglePanel} />
             </div>
-            <div className="signup-form">Signup form</div>
+            <div className="signup-form">
+              <Signup togglePannel={togglePanel} />
+            </div>
           </div>
         </div>
       </div>
