@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="519664e6-8b3d-4baa-9c0f-46d4e69aad21" name="Changes" comment="task commit" />
+    <list default="true" id="519664e6-8b3d-4baa-9c0f-46d4e69aad21" name="Changes" comment="task commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,6 +48,9 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "E:/Task Manager/Backend",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   },
   "keyToStringList": {
@@ -56,6 +61,11 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Task Manager" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.user service 8084">
     <configuration name="eureka 8090" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.ktsr.EurekaServiceApplication" />

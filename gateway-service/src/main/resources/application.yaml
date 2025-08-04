@@ -13,14 +13,11 @@ spring:
               predicates:
                 - Path=/auth/**
 
-
             # User Service - User APIs
             - id: user-service-users
               uri: lb://user-service
               predicates:
                 - Path=/api/users/**
-
-
 
             # Task Service
             - id: task-service
@@ -33,6 +30,16 @@ spring:
               uri: lb://task-submission-service
               predicates:
                 - Path=/api/submission/**
+
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins: "*"
+                allowedMethods: "*"
+                allowedHeaders: "*"
 
           discovery:
             locator:
