@@ -60,6 +60,9 @@ public class TaskServiceImpl implements TaskService {
         if(task.getStatus()!=null){
             updateTask.setStatus(task.getStatus());
         }
+        if (task.getTags() != null && !task.getTags().isEmpty()) {
+            updateTask.setTags(task.getTags());
+        }
         if(task.getDeadline()!=null){
             updateTask.setDeadline(task.getDeadline());
         }

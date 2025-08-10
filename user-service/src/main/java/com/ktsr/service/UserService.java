@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -32,6 +34,11 @@ public class UserService {
 
     private String extractEmailFromJwt(String jwt) {
         return jwtService.extractUsername(jwt);
+    }
+
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
 }

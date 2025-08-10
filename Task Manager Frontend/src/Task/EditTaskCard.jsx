@@ -5,6 +5,9 @@ import { Grid, TextField, Autocomplete, Button } from "@mui/material";
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Padding } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTaskById, updateTask } from "../Redux ToolKit/TaskSlice";
+import { useLocation } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -34,13 +37,19 @@ const tags = [
   "Python",
 ];
 
-export default function EditTaskCard({ handleClose, open }) {
+export default function EditTaskCard({ item, handleClose, open }) {
+  const dispatch = useDispatch();
+  // const { task } = useSelector((store) => store);
+  const taskDetails = useSelector((store) => store.task.taskDetails);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const taskId = queryParams.get("taskId");
   const [formData, setFormData] = React.useState({
     title: "",
     description: "",
     image: "",
-    tag: [],
-    deadLine: new Date(),
+    tags: [],
+    deadline: new Date(),
   });
 
   const [selectedTags, setSelectedTags] = React.useState([]);
@@ -55,7 +64,7 @@ export default function EditTaskCard({ handleClose, open }) {
 
   const handleTagChange = (event, value) => {
     setSelectedTags(value);
-    setFormData({ ...formData, tag: value });
+    setFormData({ ...formData, tags: value });
   };
 
   const inputStyle = {
@@ -64,17 +73,30 @@ export default function EditTaskCard({ handleClose, open }) {
   };
 
   const handleDeadLineChange = () => {
-    setFormData({ ...formData, deadLine: new Date() });
+    setFormData({ ...formData, deadline: new Date() });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { deadLine } = formData;
-    console.log("Form data : ", formData, "deadLine :", deadLine);
+    const { deadline } = formData;
+    console.log("Form data : ", formData, "deadLine :", deadline);
+    dispatch(updateTask({ id: taskId, updatedTaskData: formData }));
     handleClose();
   };
 
-  // useEffect(() => {}, []);
+  // const taskId = 0;
+  React.useEffect(() => {
+    if (item?.id) {
+      dispatch(fetchTaskById(taskId));
+    }
+  }, [taskId, dispatch]);
+
+  React.useEffect(() => {
+    if (taskDetails) {
+      setFormData(taskDetails);
+      setSelectedTags(taskDetails.tags || []);
+    }
+  }, [taskDetails]);
 
   return (
     <Modal

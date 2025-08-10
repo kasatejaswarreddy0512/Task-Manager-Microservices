@@ -1,7 +1,10 @@
 import { TextField, Button } from "@mui/material";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../../Redux ToolKit/AuthSlice";
 
 const Signin = ({ togglePannel }) => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -14,6 +17,7 @@ const Signin = ({ togglePannel }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(login(formData));
     console.log("Login form:", formData);
   };
 

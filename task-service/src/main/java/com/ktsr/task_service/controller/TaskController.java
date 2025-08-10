@@ -92,9 +92,9 @@ public class TaskController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Task> deleteTask(@PathVariable Long id
-            ,@RequestHeader("Authorization") String authHeader){
-        String jwt=authHeader.replace("Bearer","").trim();
-        UserDto userDto=userService.getUserProfile("Bearer "+jwt).getBody();
+            , @RequestHeader("Authorization") String authHeader) {
+        String jwt = authHeader.replace("Bearer", "").trim();
+        UserDto userDto = userService.getUserProfile("Bearer " + jwt).getBody();
         return ResponseEntity.ok(taskService.deleteTask(id));
     }
 

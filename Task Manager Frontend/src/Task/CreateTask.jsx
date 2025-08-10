@@ -5,6 +5,8 @@ import { Grid, TextField, Autocomplete, Button } from "@mui/material";
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Padding } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { createtask } from "../Redux ToolKit/TaskSlice";
 
 const style = {
   position: "absolute",
@@ -12,9 +14,10 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "white",
-  color: "black",
-  border: "2px solid #000",
+  bgcolor: "black",
+  color: "white",
+  // border: "2px solid #000",
+  outline: "none",
   boxShadow: 24,
   minHeight: 400, // ✅ Start height but allow auto-grow
   p: 4,
@@ -35,12 +38,14 @@ const tags = [
 ];
 
 export default function CreateTask({ handleClose, open }) {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = React.useState({
     title: "",
     description: "",
     image: "",
-    tag: [],
-    deadLine: new Date(),
+    tags: [],
+    deadline: new Date(),
   });
 
   const [selectedTags, setSelectedTags] = React.useState([]);
@@ -55,22 +60,25 @@ export default function CreateTask({ handleClose, open }) {
 
   const handleTagChange = (event, value) => {
     setSelectedTags(value);
-    setFormData({ ...formData, tag: value });
+    setFormData((prev) => ({ ...prev, tags: value })); // ✅ use prev to avoid stale state overwrite
   };
 
   const inputStyle = {
     height: "50px",
     width: "340px",
+    border: "1px solid white",
+    outline: "none",
   };
 
-  const handleDeadLineChange = () => {
-    setFormData({ ...formData, deadLine: new Date() });
+  const handleDeadLineChange = (value) => {
+    setFormData((prev) => ({ ...prev, deadline: value })); // ✅ store picked date
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { deadLine } = formData;
-    console.log("Form data : ", formData, "deadLine :", deadLine);
+    const { deadline } = formData;
+    dispatch(createtask(formData));
+    console.log("Form data : ", formData, "deadLine :", deadline);
     handleClose();
   };
 
@@ -92,8 +100,8 @@ export default function CreateTask({ handleClose, open }) {
                 name="title"
                 value={formData.title}
                 onChange={handleChange}
-                InputLabelProps={{ style: { color: "black" } }}
-                InputProps={{ style: { color: "black", ...inputStyle } }}
+                InputLabelProps={{ style: { color: "white" } }}
+                InputProps={{ style: { color: "white", ...inputStyle } }}
               />
             </Grid>
 
@@ -105,8 +113,8 @@ export default function CreateTask({ handleClose, open }) {
                 name="image"
                 value={formData.image}
                 onChange={handleChange}
-                InputLabelProps={{ style: { color: "black" } }}
-                InputProps={{ style: { color: "black", ...inputStyle } }}
+                InputLabelProps={{ style: { color: "white" } }}
+                InputProps={{ style: { color: "white", ...inputStyle } }}
               />
             </Grid>
 
@@ -120,12 +128,13 @@ export default function CreateTask({ handleClose, open }) {
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                InputLabelProps={{ style: { color: "black" } }}
+                InputLabelProps={{ style: { color: "white" } }}
                 InputProps={{
                   style: {
-                    color: "black",
+                    color: "white",
                     minHeight: "50px",
                     width: "340px", // ✅ Same as tags field
+                    border: "1px solid white",
                   },
                 }}
               />
@@ -145,14 +154,16 @@ export default function CreateTask({ handleClose, open }) {
                     {...params}
                     fullWidth
                     label="Tags"
+                    name="tags"
                     placeholder="Enter tags"
-                    InputLabelProps={{ style: { color: "black" } }}
+                    InputLabelProps={{ style: { color: "white" } }}
                     InputProps={{
                       ...params.InputProps,
                       style: {
-                        color: "black",
+                        color: "white",
                         minHeight: "50px",
                         width: "340px",
+                        border: "1px solid white ",
                       },
                     }}
                   />
@@ -166,10 +177,18 @@ export default function CreateTask({ handleClose, open }) {
                   onChange={handleDeadLineChange}
                   renderInput={(params) => <textField {...params} />}
                   label="Dead Line"
+                  name="deadline"
                   slotProps={{
                     textField: {
-                      InputLabelProps: { style: { color: "black" } },
-                      InputProps: { style: inputStyle },
+                      InputLabelProps: {
+                        style: { color: "white" },
+                      },
+                      InputProps: {
+                        style: inputStyle,
+                        sx: {
+                          color: "white", // Text inside input
+                        },
+                      },
                     },
                   }}
                 />

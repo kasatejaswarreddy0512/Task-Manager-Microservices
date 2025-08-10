@@ -1,7 +1,5 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import SubmissionCard from "./SubmissionCard";
 
@@ -12,9 +10,9 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 450,
   bgcolor: "#4c4a4aff",
-  // border: "2px solid #000",
   boxShadow: 25,
   p: 4,
+  borderRadius: "10px",
 };
 
 const submissions = [1, 2, 3];
@@ -31,9 +29,11 @@ export default function SubmissionList({ handleClose, open }) {
         <Box sx={style}>
           <div>
             {submissions.length > 0 ? (
-              <div className="space-y-2">
-                {submissions.map((item) => (
-                  <SubmissionCard></SubmissionCard>
+              <div>
+                {submissions.map((item, index) => (
+                  <div key={index} className="mb-3">
+                    <SubmissionCard />
+                  </div>
                 ))}
               </div>
             ) : (

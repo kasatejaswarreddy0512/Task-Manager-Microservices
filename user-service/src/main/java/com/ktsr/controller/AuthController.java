@@ -22,7 +22,7 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<User> signUp(@RequestBody SignUpRequest signUpRequest){
+    public ResponseEntity<JwtResponse> signUp(@RequestBody SignUpRequest signUpRequest) {
         return new ResponseEntity<>(authService.signUp(signUpRequest), HttpStatus.CREATED);
     }
 

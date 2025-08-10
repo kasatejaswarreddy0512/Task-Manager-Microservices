@@ -21,13 +21,22 @@ public class AuthService {
     private final JwtService jwtService;
 
 
-    public User signUp(SignUpRequest signUpRequest){
-        User user=new User();
+    public JwtResponse signUp(SignUpRequest signUpRequest) {
+        // Create user
+        User user = new User();
         user.setFullName(signUpRequest.getFullName());
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
         user.setRole(signUpRequest.getRole());
-        return userRepository.save(user);
+
+        User savedUser = userRepository.save(user);
+
+        // Generate token
+        String jwt = jwtService.generateToken(savedUser);
+
+        JwtResponse response = new JwtResponse();
+        response.setToken(jwt);
+        return response;
     }
 
     public JwtResponse signIn(LoginRequest loginRequest) throws Exception {

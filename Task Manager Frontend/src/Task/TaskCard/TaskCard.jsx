@@ -5,10 +5,16 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import UserList from "../UserList";
 import SubmissionList from "../SubmissionList";
 import EditTaskCard from "../EditTaskCard";
+import { useDispatch } from "react-redux";
+import { deleteTask } from "../../Redux ToolKit/TaskSlice";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const roles = "ADMIN";
 
-const TaskCard = () => {
+const TaskCard = ({ item }) => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const openMenu = Boolean(anchorEl);
 
@@ -39,12 +45,25 @@ const TaskCard = () => {
   // Edit Task
   const [openEditTask, setOpenEditTask] = React.useState(false);
   const handleCloseEditTask = () => setOpenEditTask(false);
+
+  const handleRemoveTaskIdParams = () => {
+    const updatedParams = new URLSearchParams(location.search);
+    updatedParams.delete("filter");
+    const queryString = updatedParams.toString();
+    const updatePath = queryString ? `/?${queryString}` : "/";
+    navigate(updatePath);
+  };
   const handleOpenUpdateTaskModel = () => {
+    const updatedParams = new URLSearchParams(location.search);
     setOpenEditTask(true);
+    updatedParams.set("taskId", encodeURIComponent(item.id));
+    navigate(`/?${updatedParams.toString()}`);
     handleMenuClose();
   };
 
   const handleDeleteTask = () => {
+    dispatch(deleteTask({ taskId: item.id }));
+    window.location.reload();
     handleMenuClose();
   };
 
@@ -86,10 +105,10 @@ const TaskCard = () => {
       </div>
 
       {/* Left Section */}
-      <div className="lg:flex gap-5 items-center w-[90%] lg:w-[70%] space-y-2 lg:space-y-0">
-        <div className="lg:w-[7rem] lg:h-[7rem]">
+      <div className="lg:flex gap-4 items-center w-[90%] lg:w-[70%] space-y-2 lg:space-y-0">
+        <div className="lg:w-[12rem] lg:h-[8rem] image">
           <img
-            src="https://tse1.mm.bing.net/th/id/OIP.B89JFviebUWHqx55l28wEQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3"
+            src={item.image}
             alt="Car"
             className="w-full h-full object-cover rounded-lg"
           />
@@ -97,17 +116,15 @@ const TaskCard = () => {
 
         <div className="space-y-5">
           <div className="space-y-2">
-            <h1 className="font-bold text-lg">Car Rental Website</h1>
-            <p className="text-gray-500 text-sm">
-              Uses the latest frameworks and technologies to build this website.
-            </p>
+            <h1 className="font-bold text-lg">{item.title}</h1>
+            <p className="text-gray-500 text-sm">{item.description}</p>
           </div>
 
           {/* Tech stack */}
           <div className="flex flex-wrap gap-2 items-center">
-            {[1, 1, 1, 1].map((_, index) => (
-              <span key={index} className="py-1 px-5 rounded-full techStack">
-                Angular
+            {item.tags.map((item) => (
+              <span key={item} className="py-1 px-5 rounded-full techStack">
+                {item}
               </span>
             ))}
           </div>
@@ -120,7 +137,11 @@ const TaskCard = () => {
         open={openSubmissionList}
         handleClose={handleCloseSubmissionList}
       />
-      <EditTaskCard open={openEditTask} handleClose={handleCloseEditTask} />
+      <EditTaskCard
+        item={item}
+        open={openEditTask}
+        handleClose={handleCloseEditTask}
+      />
     </div>
   );
 };

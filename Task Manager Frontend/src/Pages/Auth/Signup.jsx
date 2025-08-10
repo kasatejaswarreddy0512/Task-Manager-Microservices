@@ -7,13 +7,17 @@ import {
   Select,
 } from "@mui/material";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getUserProfile, register } from "../../Redux ToolKit/AuthSlice";
 
 const Signup = ({ togglePannel }) => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
-    role: "",
+    role: "USER", // ✅ Default role to prevent empty value
   });
 
   const handleChange = (e) => {
@@ -27,6 +31,14 @@ const Signup = ({ togglePannel }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // ✅ Simple validation for role
+    if (!formData.role) {
+      alert("Please select a role");
+      return;
+    }
+
+    dispatch(register(formData));
     console.log("Signup form:", formData);
   };
 
@@ -95,7 +107,7 @@ const Signup = ({ togglePannel }) => {
                 "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                   borderColor: "white",
                 },
-                "& .MuiSvgIcon-root": { color: "white" }, // Dropdown arrow color
+                "& .MuiSvgIcon-root": { color: "white" },
               }}
             >
               <MenuItem value={"ADMIN"}>ADMIN</MenuItem>

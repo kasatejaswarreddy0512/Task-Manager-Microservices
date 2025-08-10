@@ -1,9 +1,6 @@
 package com.ktsr.task_service.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +22,7 @@ public class Task {
     private String description;
     private String image;
     private Long assignedUserId;
+    @ElementCollection
     private List<String> tags= new ArrayList<>();
     private LocalDateTime deadline;
     private LocalDateTime createdAt;
