@@ -13,6 +13,8 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserList } from "../Redux ToolKit/AuthSlice";
+import { assinedTaskToUser } from "../Redux ToolKit/TaskSlice";
+import { useLocation } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -30,10 +32,18 @@ const style = {
 export default function UserList({ handleClose, open }) {
   const dispatch = useDispatch();
   const { auth } = useSelector((store) => store);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const taskId = queryParams.get("taskId");
 
   React.useEffect(() => {
     dispatch(getUserList(localStorage.getItem("jwt")));
   }, [dispatch]);
+
+  const handleAssignedtask = (item) => {
+    dispatch(assinedTaskToUser({ userId: item.id, taskId: taskId }));
+    handleClose();
+  };
 
   return (
     <Modal
@@ -82,6 +92,7 @@ export default function UserList({ handleClose, open }) {
                     className="customBtn"
                     variant="contained"
                     size="small"
+                    onClick={() => handleAssignedtask(item)}
                   >
                     Select
                   </Button>

@@ -5,16 +5,20 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import UserList from "../UserList";
 import SubmissionList from "../SubmissionList";
 import EditTaskCard from "../EditTaskCard";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteTask } from "../../Redux ToolKit/TaskSlice";
 import { useLocation, useNavigate } from "react-router-dom";
-
-const roles = "ADMIN";
+import SubmitFormModel from "../SubmitFormModel";
 
 const TaskCard = ({ item }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
+
+  // ✅ Get auth slice directly instead of the whole store
+  const auth = useSelector((store) => store.auth);
+  const role = auth?.user?.role || ""; // ✅ fallback to empty string
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const openMenu = Boolean(anchorEl);
 
@@ -26,38 +30,36 @@ const TaskCard = ({ item }) => {
     setAnchorEl(null);
   };
 
-  // User List
+  // -------------------- User List --------------------
   const [openUserList, setOpenUserList] = React.useState(false);
   const handleCloseUserList = () => setOpenUserList(false);
   const handleOpenUserList = () => {
+    const updatedParams = new URLSearchParams(location.search);
+    updatedParams.set("taskId", encodeURIComponent(item.id));
+    navigate(`/?${updatedParams.toString()}`);
     setOpenUserList(true);
     handleMenuClose();
   };
 
-  // Submission List
+  // -------------------- Submission List --------------------
   const [openSubmissionList, setOpenSubmissionList] = React.useState(false);
   const handleCloseSubmissionList = () => setOpenSubmissionList(false);
   const handleOpenSubmissionList = () => {
+    const updatedParams = new URLSearchParams(location.search);
+    updatedParams.set("taskId", encodeURIComponent(item.id));
+    navigate(`/?${updatedParams.toString()}`);
     setOpenSubmissionList(true);
     handleMenuClose();
   };
 
-  // Edit Task
+  // -------------------- Edit Task --------------------
   const [openEditTask, setOpenEditTask] = React.useState(false);
   const handleCloseEditTask = () => setOpenEditTask(false);
-
-  const handleRemoveTaskIdParams = () => {
-    const updatedParams = new URLSearchParams(location.search);
-    updatedParams.delete("filter");
-    const queryString = updatedParams.toString();
-    const updatePath = queryString ? `/?${queryString}` : "/";
-    navigate(updatePath);
-  };
   const handleOpenUpdateTaskModel = () => {
     const updatedParams = new URLSearchParams(location.search);
-    setOpenEditTask(true);
     updatedParams.set("taskId", encodeURIComponent(item.id));
     navigate(`/?${updatedParams.toString()}`);
+    setOpenEditTask(true);
     handleMenuClose();
   };
 
@@ -66,6 +68,19 @@ const TaskCard = ({ item }) => {
     window.location.reload();
     handleMenuClose();
   };
+
+  // -------------------- Submit Form --------------------
+  const [openSubmitFormModel, setOpenSubmitFormModel] = React.useState(false);
+  const handleCloseSubmitFormModel = () => setOpenSubmitFormModel(false);
+  const handleOpenSubmitFormModel = () => {
+    const updatedParams = new URLSearchParams(location.search);
+    updatedParams.set("taskId", encodeURIComponent(item.id));
+    navigate(`/?${updatedParams.toString()}`);
+    setOpenSubmitFormModel(true);
+    handleMenuClose();
+  };
+
+  console.log("User role from Redux:", role); // ✅ Debug check
 
   return (
     <div className="card relative p-4 border rounded-lg shadow-md">
@@ -91,7 +106,7 @@ const TaskCard = ({ item }) => {
             "aria-labelledby": "basic-button",
           }}
         >
-          {roles === "ADMIN" && (
+          {role === "ADMIN" && (
             <>
               <MenuItem onClick={handleOpenUserList}>Assigned User</MenuItem>
               <MenuItem onClick={handleOpenSubmissionList}>
@@ -99,6 +114,12 @@ const TaskCard = ({ item }) => {
               </MenuItem>
               <MenuItem onClick={handleOpenUpdateTaskModel}>Edit</MenuItem>
               <MenuItem onClick={handleDeleteTask}>Delete</MenuItem>
+            </>
+          )}
+
+          {role === "USER" && (
+            <>
+              <MenuItem onClick={handleOpenSubmitFormModel}>Submit</MenuItem>
             </>
           )}
         </Menu>
@@ -109,7 +130,7 @@ const TaskCard = ({ item }) => {
         <div className="lg:w-[12rem] lg:h-[8rem] image">
           <img
             src={item.image}
-            alt="Car"
+            alt="Task"
             className="w-full h-full object-cover rounded-lg"
           />
         </div>
@@ -122,9 +143,9 @@ const TaskCard = ({ item }) => {
 
           {/* Tech stack */}
           <div className="flex flex-wrap gap-2 items-center">
-            {item.tags.map((item) => (
-              <span key={item} className="py-1 px-5 rounded-full techStack">
-                {item}
+            {item.tags.map((tag) => (
+              <span key={tag} className="py-1 px-5 rounded-full techStack">
+                {tag}
               </span>
             ))}
           </div>
@@ -141,6 +162,10 @@ const TaskCard = ({ item }) => {
         item={item}
         open={openEditTask}
         handleClose={handleCloseEditTask}
+      />
+      <SubmitFormModel
+        open={openSubmitFormModel}
+        handleClose={handleCloseSubmitFormModel}
       />
     </div>
   );

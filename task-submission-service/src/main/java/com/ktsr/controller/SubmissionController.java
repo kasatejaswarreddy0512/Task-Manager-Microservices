@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/submission")
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 public class SubmissionController {
 
     private final SubmissionService submissionService;
@@ -55,7 +56,8 @@ public class SubmissionController {
     }
 
     @GetMapping("task/{taskId}")
-    public ResponseEntity<List<Submission>> getTAskSubmissionByTaskId(@PathVariable Long taskId, @RequestHeader("Authorization") String authHeader){
+    public ResponseEntity<List<Submission>> getTAskSubmissionByTaskId(@PathVariable Long taskId,
+                                                                      @RequestHeader("Authorization") String authHeader){
         String jwt=authHeader.replace("Bearer","").trim();
         UserDto userDto=userService.getUserProfile("Bearer "+jwt).getBody();
 

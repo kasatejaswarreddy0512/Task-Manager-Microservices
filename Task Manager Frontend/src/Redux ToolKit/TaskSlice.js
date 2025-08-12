@@ -32,7 +32,7 @@ export const fetchTaskById = createAsyncThunk("task/fetchTaskById", async (taskI
   setAuthHeader(localStorage.getItem("jwt"), api);
   try {
     const { data } = await api.get(`${BASE_URL}/api/task/${taskId}`);
-    console.log("fetch task by ID:", data);
+    // console.log("fetch task by ID:", data);
     return data;
   } catch (error) {
     console.error("fetchTaskById error:", error);
@@ -70,7 +70,7 @@ export const updateTask = createAsyncThunk("task/updateTask", async ({ id, updat
 export const assinedTaskToUser = createAsyncThunk("task/assinedTaskToUser", async ({ taskId, userId }) => {
   setAuthHeader(localStorage.getItem("jwt"), api);
   try {
-    const { data } = await api.post(`${BASE_URL}/api/task/${taskId}/user/${userId}/assigned`);
+    const { data } = await api.put(`${BASE_URL}/api/task/${taskId}/user/${userId}/assigned`);
     console.log("Assigned Task To User:", data);
     return data;
   } catch (error) {

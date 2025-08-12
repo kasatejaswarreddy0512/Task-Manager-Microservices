@@ -1,19 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"; // ✅ Added createSlice
-import { api, setAuthHeader } from "../APi/Api";
+import { api, BASE_URL, setAuthHeader } from "../APi/Api";
 
 // ---------------------- SUBMIT TASK ----------------------
-export const submitTask = createAsyncThunk("submissions/submitTask", async ({ taskId, githubLink }) => {
-  setAuthHeader(localStorage.getItem("jwt"), api); // ✅ Fixed incorrect arguments
+export const submitTask = createAsyncThunk(
+  "submissions/submitTask",
+  async ({ taskId, githubLink }) => {
+    setAuthHeader(localStorage.getItem("jwt"), api);
 
-  try {
-    const { data } = await api.post(`api/submission?task_id=${taskId}&github_link=${githubLink}`, {}); // ✅ Fixed space in URL
-    console.log("Submit Task:", data);
-    return data;
-  } catch (error) {
-    console.log("catch", error);
-    throw Error(error.response?.data?.error || "Failed to Submit tasks");
+    try {
+      const { data } = await api.post(
+        `api/submission/submit?taskId=${taskId}&githubLink=${encodeURIComponent(githubLink)}`
+      );
+      return data;
+    } catch (error) {
+      console.error("Error submitting task:", error.response?.data || error.message);
+      throw error;
+    }
   }
-});
+);
+
+
 
 // ---------------------- FETCH ALL SUBMISSIONS ----------------------
 export const fetchAllSubmissions = createAsyncThunk("submissions/fetchAllSubmissions", async () => {
@@ -30,18 +36,19 @@ export const fetchAllSubmissions = createAsyncThunk("submissions/fetchAllSubmiss
 });
 
 // ---------------------- FETCH SUBMISSION BY TASK ID ----------------------
-export const fetchSubmissionByTaskId = createAsyncThunk("submissions/fetchSubmissionByTaskId", async ({ taskId }) => {
-  setAuthHeader(localStorage.getItem("jwt"), api);
-
-  try {
-    const { data } = await api.get(`api/submission/task/${taskId}`);
-    console.log("fetch Task by TaskId:", data);
-    return data;
-  } catch (error) {
-    console.log("catch", error);
-    throw Error(error.response?.data?.error || "Failed to fetch Task By TaskID");
+export const fetchSubmissionByTaskId = createAsyncThunk(
+  "submissions/fetchByTaskId",
+  async ({ taskId }, { rejectWithValue }) => {
+    try {
+      const { data } = await api.get(`${BASE_URL}/api/submission/task/${taskId}`);
+      console.log("✅ API Response for Task:", taskId, data);
+      return data;
+    } catch (error) {
+      console.error("❌ Error fetching submissions:", error);
+      return rejectWithValue(error.response?.data || error.message);
+    }
   }
-});
+);
 
 // ---------------------- ACCEPT OR DECLINE SUBMISSION ----------------------
 export const acceptDeclineSubmission = createAsyncThunk("submissions/acceptDeclineSubmission", async ({ id, status }) => {
@@ -92,9 +99,26 @@ const submissionSlice = createSlice({
       })
 
       // FETCH SUBMISSION BY TASK ID
-      .addCase(fetchSubmissionByTaskId.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.submissions = action.payload;
+     .addCase(fetchSubmissionByTaskId.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+     .addCase(fetchSubmissionByTaskId.fulfilled, (state, action) => {
+        state.loading = false;
+
+        let payload = action.payload;
+
+        // Ensure payload is always an array
+        if (!Array.isArray(payload)) {
+          payload = payload ? [payload] : [];
+        }
+
+        // Remove null/undefined entries
+        state.submissions = payload.filter(Boolean);
+      })
+      .addCase(fetchSubmissionByTaskId.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to fetch submissions";
       })
 
       // ACCEPT OR DECLINE SUBMISSION

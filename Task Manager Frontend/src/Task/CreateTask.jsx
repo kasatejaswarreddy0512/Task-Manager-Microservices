@@ -14,8 +14,8 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "black",
-  color: "white",
+  bgcolor: "white",
+  color: "black",
   // border: "2px solid #000",
   outline: "none",
   boxShadow: 24,
@@ -65,7 +65,7 @@ export default function CreateTask({ handleClose, open }) {
 
   const inputStyle = {
     height: "50px",
-    width: "340px",
+    width: "337px",
     border: "1px solid white",
     outline: "none",
   };
@@ -100,8 +100,8 @@ export default function CreateTask({ handleClose, open }) {
                 name="title"
                 value={formData.title}
                 onChange={handleChange}
-                InputLabelProps={{ style: { color: "white" } }}
-                InputProps={{ style: { color: "white", ...inputStyle } }}
+                InputLabelProps={{ style: { color: "black" } }}
+                InputProps={{ style: { color: "black", ...inputStyle } }}
               />
             </Grid>
 
@@ -113,8 +113,8 @@ export default function CreateTask({ handleClose, open }) {
                 name="image"
                 value={formData.image}
                 onChange={handleChange}
-                InputLabelProps={{ style: { color: "white" } }}
-                InputProps={{ style: { color: "white", ...inputStyle } }}
+                InputLabelProps={{ style: { color: "black" } }}
+                InputProps={{ style: { color: "black", ...inputStyle } }}
               />
             </Grid>
 
@@ -128,10 +128,10 @@ export default function CreateTask({ handleClose, open }) {
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                InputLabelProps={{ style: { color: "white" } }}
+                InputLabelProps={{ style: { color: "black" } }}
                 InputProps={{
                   style: {
-                    color: "white",
+                    color: "black",
                     minHeight: "50px",
                     width: "340px", // ✅ Same as tags field
                     border: "1px solid white",
@@ -156,11 +156,11 @@ export default function CreateTask({ handleClose, open }) {
                     label="Tags"
                     name="tags"
                     placeholder="Enter tags"
-                    InputLabelProps={{ style: { color: "white" } }}
+                    InputLabelProps={{ style: { color: "black" } }}
                     InputProps={{
                       ...params.InputProps,
                       style: {
-                        color: "white",
+                        color: "black",
                         minHeight: "50px",
                         width: "340px",
                         border: "1px solid white ",
@@ -181,12 +181,12 @@ export default function CreateTask({ handleClose, open }) {
                   slotProps={{
                     textField: {
                       InputLabelProps: {
-                        style: { color: "white" },
+                        style: { color: "black" },
                       },
                       InputProps: {
                         style: inputStyle,
                         sx: {
-                          color: "white", // Text inside input
+                          color: "black", // Text inside input
                         },
                       },
                     },
