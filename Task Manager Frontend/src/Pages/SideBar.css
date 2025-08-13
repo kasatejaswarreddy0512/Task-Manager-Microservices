@@ -1,8 +1,8 @@
 .card {
-  background-color: #0c071b;
-  box-shadow: rgba(215, 106, 255, 0.2) 0px 4px 12px;
+  background-color: #131214 !important;
+  box-shadow: rgba(215, 106, 255, 0.2) 0px 4px 12px !important;
   padding: 20px;
-  border-radius: 16px;
+  border-radius: 26px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,17 +10,20 @@
 
 }
 
-.menuItem {
-  border: 2px solid #c24dd0;
-  border-radius: 30px;
+.menuItem,
+.activeMenuItem {
+  /* border: 2px solid; */
   padding: 10px;
   text-align: center;
   font-size: 14px;
-  color: white;
+  color: white !important; /* ✅ black text for both */
   transition: all 0.3s ease;
+  border-radius: 30px;
+}
+
+.menuItem {
+  /* border-color: #c24dd0; */
   background: rgba(194, 77, 208, 0.1);
-  
-  
 }
 
 .menuItem:hover {
@@ -28,9 +31,8 @@
 }
 
 .activeMenuItem {
-  background-image: linear-gradient(120deg, #c24dd0, #7a72fa);
-  color: white;
-  border: 2px solid transparent;
+  /* border-color: transparent; */
+  background-image: linear-gradient(100deg, #0d0c0e, #7a72fa, #0d0c0e);
 }
 
 .logOut {
@@ -46,5 +48,5 @@
 }
 
 .logOut:hover {
-  background-image: linear-gradient(150deg, #ff005d, #c24dd0);
+  background-image: linear-gradient(100deg, #0d0c0e, #7a72fa, #0d0c0e);
 }

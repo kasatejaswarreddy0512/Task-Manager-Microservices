@@ -3,7 +3,7 @@ import "./SideBar.css";
 import { Avatar, Button } from "@mui/material";
 import CreateTask from "../Task/CreateTask";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../Redux ToolKit/AuthSlice";
 
 const SideBar = () => {
@@ -19,7 +19,10 @@ const SideBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const role = "ADMIN";
+  // Get role from Redux auth state (or localStorage if you store it there)
+  const { auth } = useSelector((store) => store);
+  const role = auth.user?.role || "USER"; // fallback to USER if undefined
+
   const [activeMenu, setActiveMenu] = useState("HOME");
 
   const [openCreateTaskForm, setOpenCreateTaskForm] = useState(false);
@@ -53,14 +56,16 @@ const SideBar = () => {
     <>
       <div className="card min-h-[85vh] w-[20vw] ml-5 flex flex-col justify-center items-center">
         <Avatar
-          src="https://learntech.in/wp-content/uploads/2015/05/logo-design.jpg"
+          src="https://4.bp.blogspot.com/-LLst6-jf4FA/VeRJjUNrFsI/AAAAAAAADIQ/W9FCba0BQZA/s1600/prabhas1.jpg"
           sx={{
-            backgroundColor: "#c24dd0",
+            // backgroundColor: "#c24dd0",
+            // color: "white",
+
             width: "8rem",
             height: "8rem",
             marginBottom: "16px",
           }}
-          className="border-2 border-red-500 mb-6"
+          className="border-2 border-gray-800 mb-6"
         />
 
         <div className="flex flex-col w-full  space-y-2 px-4">
@@ -70,7 +75,7 @@ const SideBar = () => {
               <p
                 onClick={() => handleMenuChange(item)}
                 key={index}
-                className={`text-sm text-center text-white mt-8 border  py-2 rounded-full cursor-pointer ${
+                className={`text-sm text-center mt-8 border  py-2 rounded-full cursor-pointer ${
                   activeMenu === item.name ? "activeMenuItem" : "menuItem"
                 }`}
               >

@@ -14,7 +14,10 @@ const NavBar = () => {
       <div className="flex items-center gap-5">
         <p>{auth.user.fullName}</p>
 
-        <Avatar sx={{ backgroundColor: "#c24dd0" }}>T</Avatar>
+        <Avatar
+          src="https://4.bp.blogspot.com/-LLst6-jf4FA/VeRJjUNrFsI/AAAAAAAADIQ/W9FCba0BQZA/s1600/prabhas1.jpg"
+          sx={{ backgroundColor: "#c24dd0" }}
+        ></Avatar>
       </div>
     </div>
   );

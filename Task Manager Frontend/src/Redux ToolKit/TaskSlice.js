@@ -18,7 +18,7 @@ export const fetchTasks = createAsyncThunk("task/fetchTasks", async ({ status })
 export const fetchUsersTasks = createAsyncThunk("task/fetchUsersTasks", async ({ status }) => {
   setAuthHeader(localStorage.getItem("jwt"), api);
   try {
-    const { data } = await api.get("/api/task/user", { params: { status } });
+    const { data } = await api.get(`${BASE_URL}/api/task/user`, { params: { status } });
     console.log("fetch users tasks:", data);
     return data;
   } catch (error) {

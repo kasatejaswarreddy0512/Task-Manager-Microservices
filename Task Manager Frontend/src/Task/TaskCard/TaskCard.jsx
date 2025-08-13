@@ -131,7 +131,7 @@ const TaskCard = ({ item }) => {
           <img
             src={item.image}
             alt="Task"
-            className="w-full h-full object-cover rounded-lg"
+            className="img w-full h-full object-cover rounded-lg"
           />
         </div>
 
