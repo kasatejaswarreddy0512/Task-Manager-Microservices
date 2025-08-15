@@ -8,7 +8,9 @@
   align-items: center;
   margin-left: 70px;
   border: 1px solid white !important;
+
   }
+
 
 .menuItem,
 .activeMenuItem {
@@ -16,7 +18,7 @@
   padding: 10px;
   text-align: center;
   font-size: 14px;
-  color: white !important; /* ✅ black text for both */
+  color: white !important;
   transition: all 0.3s ease;
   border-radius: 30px;
 }

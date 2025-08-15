@@ -58,9 +58,6 @@ const SideBar = () => {
         <Avatar
           src="https://4.bp.blogspot.com/-LLst6-jf4FA/VeRJjUNrFsI/AAAAAAAADIQ/W9FCba0BQZA/s1600/prabhas1.jpg"
           sx={{
-            // backgroundColor: "#c24dd0",
-            // color: "white",
-
             width: "8rem",
             height: "8rem",
             marginBottom: "16px",

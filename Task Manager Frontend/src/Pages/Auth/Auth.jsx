@@ -16,28 +16,38 @@ const Auth = () => {
         <div className={`cover ${isRegister ? "rotate-active" : ""}`}>
           <div className="front">
             <img
-              src="https://tse2.mm.bing.net/th/id/OIP.Db_6MWnOitg4y0KrmavdKwHaEK?pid=ImgDet&w=474&h=266&rs=1&o=7&rm=3"
+              src="https://images.freecreatives.com/wp-content/uploads/2015/03/Huge-Backgrounds-63.jpg"
               alt=""
             />
             <div className="text">
               <span className="text-1">
-                Success is built upon well-organized tasks
+                Great goals are reached through disciplined execution.
               </span>
-              <span className="text-2 text-xs"> Let's get Connected </span>
+              <span className="text-2 text-xs ">
+                Let’s connect and create impact.
+              </span>
             </div>
           </div>
 
           <div className="back">
             <img
-              src="https://tse3.mm.bing.net/th/id/OIP.Y1FstaspXDnGyDKZ5mgsPQHaEK?pid=ImgDet&w=474&h=266&rs=1&o=7&rm=3"
+              src="https://reddometta.com/wp-content/uploads/2020/10/website-design-background-1-1.jpg"
               alt=""
             />
+            <div className="text">
+              <span className="text-1 quote">
+                Meaningful results come from consistent, purposeful effort.
+              </span>
+              <span className="text-2 text-xs">
+                Join us in shaping the future.
+              </span>
+            </div>
           </div>
         </div>
 
         <div className="forms h-full">
           <div className="form-content h-full">
-            <div className="login-form">
+            <div className="login-form ">
               <Signin togglePannel={togglePanel} />
             </div>
             <div className="signup-form">

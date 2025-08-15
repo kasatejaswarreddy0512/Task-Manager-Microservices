@@ -56,7 +56,7 @@ export const getUserProfile = createAsyncThunk(
   async (jwt, { rejectWithValue }) => {
     try {
       setAuthHeader(jwt); // ✅ fixed: no need to pass 'api'
-      const { data } = await api.get("/api/users/profile"); // BASE_URL already set in api instance
+      const { data } = await api.get("/api/users/profile"); 
       console.log("User Profile Success", data);
       return data;
     } catch (error) {

@@ -14,7 +14,7 @@
   padding: 40px 30px;
   box-shadow: rgba(215, 106, 255, 0.507) 0px 0px 100px;
 
-  perspective: 500px;
+  /* perspective: 500px; */
   height: 70%;
 
 }
@@ -104,6 +104,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* background: none !important; */
 }
 
 .form-content .login-form,
@@ -114,4 +115,14 @@
 .textStyle{
   color: #c24dd0;
   text-shadow: 0px 0px 40px rgba(255. 255,255);
+}
+.login-form .shadow-lg {
+  box-shadow: none !important;
+}
+.signup-form .shadow-lg {
+  box-shadow: none !important;
+}
+span.quote {
+  font-style: italic;
+  color: white !important;
 }

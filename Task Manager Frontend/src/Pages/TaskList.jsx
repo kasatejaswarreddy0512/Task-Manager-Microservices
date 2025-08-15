@@ -20,7 +20,7 @@ const TaskList = () => {
     }
   }, [filterValue]);
 
-  console.log("task", task);
+  // console.log("task", task);
 
   return (
     <div className="w-[900px]">
