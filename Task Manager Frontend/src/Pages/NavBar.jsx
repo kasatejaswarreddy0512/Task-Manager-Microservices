@@ -1,4 +1,4 @@
-import { Avatar } from "@mui/material";
+import { Avatar, IconButton } from "@mui/material";
 import React from "react";
 import "./NavBar.css";
 import Auth from "./Auth/Auth";

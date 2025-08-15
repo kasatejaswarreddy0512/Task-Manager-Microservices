@@ -59,7 +59,7 @@ public class SubmissionServiceImpl implements SubmissionService {
     public Submission acceptDeclineSubmission(Long id, String status, String jwt) throws Exception {
         Submission submission = getSubmissionById(id);
 
-        submission.setStaus(status);
+        submission.setStatus(status);
 
         if ("ACCEPTED".equalsIgnoreCase(status)) {
             taskService.completeTask(submission.getTaskId(), jwt);

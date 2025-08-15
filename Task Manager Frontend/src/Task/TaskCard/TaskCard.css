@@ -1,10 +1,10 @@
 .card {
   background-color: #0f0a1d;
-  border: 1px solid rgba(194, 77, 208, 0.4);
+  /* border: 1px solid rgba(194, 77, 208, 0.4); */
   border-radius: 14px;
   padding: 16px;
   margin-bottom: 16px;
-  box-shadow: rgba(194, 77, 208, 0.15) 0px 4px 12px;
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 4px 12px !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -15,6 +15,7 @@
 
 .image{
   margin-left: -100px;
+  margin-top: 6px;
 }
 
 .card h1 {
@@ -30,9 +31,9 @@
 }
 
 .techStack {
-  background: rgba(194, 77, 208, 0.15);
-  color: #c24dd0;
-  border: 1px solid #c24dd0;
+  background: rgba(109, 241, 155, 0.15);
+  color: #ffffff;
+  border: 1px solid #07a91d;
   border-radius: 30px;
   padding: 4px 12px;
   font-size: 0.8rem;
@@ -43,5 +44,6 @@
 }
 
 .techStack:hover {
-  background: rgba(194, 77, 208, 0.3);
+  background: rgba(109, 241, 155, 0.5);
+  cursor: pointer;
 }

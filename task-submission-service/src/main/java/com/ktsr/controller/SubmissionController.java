@@ -64,19 +64,19 @@ public class SubmissionController {
         return ResponseEntity.ok(submissionService.getTAskSubmissionByTaskId(taskId));
     }
 
-    @PutMapping("accept/{id}")
-    public ResponseEntity<Submission> acceptDeclineSubmission(
-            @PathVariable Long id,
-            @RequestParam String status,
-            @RequestHeader("Authorization") String authHeader
-    ) throws Exception {
-        String jwt = authHeader.replace("Bearer", "").trim();
-
-        UserDto userDto = userService.getUserProfile("Bearer " + jwt).getBody();
-
-        Submission updatedSubmission = submissionService.acceptDeclineSubmission(id, status, authHeader);
-        return ResponseEntity.ok(updatedSubmission);
-    }
+        @PutMapping("accept/{id}")
+        public ResponseEntity<Submission> acceptDeclineSubmission(
+                @PathVariable Long id,
+                @RequestParam String status,
+                @RequestHeader("Authorization") String authHeader
+        ) throws Exception {
+            String jwt = authHeader.replace("Bearer", "").trim();
+    
+            UserDto userDto = userService.getUserProfile("Bearer " + jwt).getBody();
+    
+            Submission updatedSubmission = submissionService.acceptDeclineSubmission(id, status, authHeader);
+            return ResponseEntity.ok(updatedSubmission);
+        }
 
 
 

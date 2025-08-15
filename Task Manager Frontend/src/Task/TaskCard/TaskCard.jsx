@@ -126,25 +126,31 @@ const TaskCard = ({ item }) => {
       </div>
 
       {/* Left Section */}
-      <div className="lg:flex gap-4 items-center w-[90%] lg:w-[70%] space-y-2 lg:space-y-0">
-        <div className="lg:w-[12rem] lg:h-[8rem] image">
+      <div className="flex flex-col lg:flex-row gap-4 items-start w-full lg:w-[70%]">
+        {/* Image */}
+        <div className="image w-full sm:w-[12rem] lg:w-[10rem] lg:h-[7rem] flex-shrink-0">
           <img
             src={item.image}
             alt="Task"
-            className="img w-full h-full object-cover rounded-lg"
+            className="w-full h-auto lg:h-full object-cover rounded-lg"
           />
         </div>
 
-        <div className="space-y-5">
-          <div className="space-y-2">
+        {/* Text Section */}
+        <div className="flex flex-col justify-between gap-4 flex-1">
+          {/* Title & Description */}
+          <div>
             <h1 className="font-bold text-lg">{item.title}</h1>
             <p className="text-gray-500 text-sm">{item.description}</p>
           </div>
 
-          {/* Tech stack */}
+          {/* Tech Stack */}
           <div className="flex flex-wrap gap-2 items-center">
             {item.tags.map((tag) => (
-              <span key={tag} className="py-1 px-5 rounded-full techStack">
+              <span
+                key={tag}
+                className="py-1 px-5 rounded-full bg-gray-800 text-white text-xs techStack"
+              >
                 {tag}
               </span>
             ))}
