@@ -37,7 +37,7 @@ It allows **Admins** to create and assign tasks, and **Users** to view, submit, 
 * **Spring Boot** (REST API, Security, Feign Clients)
 * **Spring Cloud Netflix Eureka** (Service Discovery)
 * **Spring Cloud Gateway** (API Gateway)
-* **PostgreSQL** (Database)
+* **MySQL** (Database)
 * **Maven** (Build Tool)
 
 ### **Frontend**
@@ -82,7 +82,7 @@ It allows **Admins** to create and assign tasks, and **Users** to view, submit, 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/Task-Manager-Microservices.git
+   git clone https://github.com/kasatejaswarreddy0512/Task-Manager-Microservices
    cd Task-Manager-Microservices
    ```
 2. Start **PostgreSQL** and create databases for each microservice.
@@ -144,21 +144,17 @@ It allows **Admins** to create and assign tasks, and **Users** to view, submit, 
 
 ## 📸 Screenshots
 
-*(Add UI & API screenshots here)*
+<img src="images/postman.png" width="600" height="400" />
+<img src="images/taskHome.png" width="600" height="400" />
 
 ---
 
 ## 👨‍💻 Author
 
 **Tejaswar Reddy Kasa**
-[GitHub](https://github.com/kasatejaswarreddy0512)
+GitHub: https://github.com/kasatejaswarreddy0512
 
 ---
 
-## 📜 License
-
-This project is licensed under the **MIT License**.
-
----
 
 If you want, I can now add a **system architecture diagram** to visually show Eureka → Gateway → Microservices → Frontend flow. That will make the README much more professional for GitHub.
