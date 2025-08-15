@@ -146,7 +146,7 @@ It allows **Admins** to create and assign tasks, and **Users** to view, submit, 
 
 <img src="images/postman.png" width="600" height="400" />
 <img src="images/taskHome.png" width="600" height="400" />
-<img src="images/signup.png" width="600" height="400" />
+<img src="images/singup.png" width="600" height="400" />
 <img src="images/login.png" width="600" height="400" />
 <img src="images/userPage.png" width="600" height="400" />
 
