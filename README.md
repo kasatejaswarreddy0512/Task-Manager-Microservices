@@ -82,7 +82,7 @@ It allows **Admins** to create and assign tasks, and **Users** to view, submit, 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/Task-Manager-Microservices.git
+   git clone https://github.com/kasatejaswarreddy0512/Task-Manager-Microservices
    cd Task-Manager-Microservices
    ```
 2. Start **PostgreSQL** and create databases for each microservice.
