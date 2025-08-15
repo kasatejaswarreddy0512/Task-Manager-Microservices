@@ -144,7 +144,8 @@ It allows **Admins** to create and assign tasks, and **Users** to view, submit, 
 
 ## 📸 Screenshots
 
-<img src="images/postman.png" width="600" />
+<img src="images/postman.png" width="600" height="400" />
+<img src="images/taskHome.png" width="600" height="400" />
 
 ---
 
