@@ -152,7 +152,7 @@ It allows **Admins** to create and assign tasks, and **Users** to view, submit, 
 ## 👨‍💻 Author
 
 **Tejaswar Reddy Kasa**
-[GitHub](https://github.com/kasatejaswarreddy0512)
+GitHub: https://github.com/kasatejaswarreddy0512
 
 ---
 
