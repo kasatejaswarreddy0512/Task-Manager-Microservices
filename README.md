@@ -37,7 +37,7 @@ It allows **Admins** to create and assign tasks, and **Users** to view, submit, 
 * **Spring Boot** (REST API, Security, Feign Clients)
 * **Spring Cloud Netflix Eureka** (Service Discovery)
 * **Spring Cloud Gateway** (API Gateway)
-* **PostgreSQL** (Database)
+* **MySQL** (Database)
 * **Maven** (Build Tool)
 
 ### **Frontend**
@@ -144,7 +144,7 @@ It allows **Admins** to create and assign tasks, and **Users** to view, submit, 
 
 ## 📸 Screenshots
 
-*(Add UI & API screenshots here)*
+<img src="../images/postman.png" />
 
 ---
 
@@ -155,10 +155,5 @@ It allows **Admins** to create and assign tasks, and **Users** to view, submit, 
 
 ---
 
-## 📜 License
-
-This project is licensed under the **MIT License**.
-
----
 
 If you want, I can now add a **system architecture diagram** to visually show Eureka → Gateway → Microservices → Frontend flow. That will make the README much more professional for GitHub.
