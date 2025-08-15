@@ -73,13 +73,10 @@ It allows **Admins** to create and assign tasks, and **Users** to view, submit, 
    ```bash
    git clone https://github.com/your-username/Task-Manager-Microservices.git
    cd Task-Manager-Microservices
-````
 
 2. Start **PostgreSQL** and create databases for each microservice.
 3. Update `application.yml` or `application.properties` in each service with your DB credentials.
 4. Start services in the following order:
-
-   ```bash
    # From IntelliJ or terminal
    eureka-service
    gateway-service
